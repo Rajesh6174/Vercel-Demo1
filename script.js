@@ -51,7 +51,7 @@ contactForm.addEventListener("submit", (event) => {
   const company = document.getElementById("company").value.trim();
   const message = document.getElementById("message").value.trim();
 
-  const subject = encodeURIComponent(`BI consultation request from ${name || "website visitor"}`);
+  const subject = encodeURIComponent(`P&L demo request from ${name || "website visitor"}`);
   const body = encodeURIComponent(
     `Name: ${name}\nEmail: ${email}\nCompany: ${company}\n\n${message}`
   );
