@@ -3,17 +3,363 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Random Fact Generator</title>
+  <title>Vercel-Demo1 | BI &amp; Data Analytics Consulting</title>
+  <meta name="description" content="Vercel-Demo1 is a business intelligence and data analytics consultancy helping companies turn raw data into decisions — strategy, dashboards, data engineering, and governance." />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%93%8A%3C/text%3E%3C/svg%3E" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <button id="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark mode">🌙</button>
-  <main class="card">
-    <h1>🎲 Random Fact Generator</h1>
-    <p id="fact" aria-live="polite">Click the button to learn something random!</p>
-    <button id="btn">Give me a fact</button>
-    <p class="counter">Facts seen: <span id="count">0</span></p>
+  <header class="site-header" id="top">
+    <div class="container header-inner">
+      <a class="logo" href="#top">
+        <span class="logo-mark" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="3" y="12" width="4" height="9" rx="1" fill="currentColor"/>
+            <rect x="10" y="6" width="4" height="15" rx="1" fill="currentColor"/>
+            <rect x="17" y="2" width="4" height="19" rx="1" fill="currentColor"/>
+          </svg>
+        </span>
+        Vercel-Demo1
+      </a>
+
+      <nav class="nav-links" id="nav-links">
+        <a href="#services">Services</a>
+        <a href="#approach">Approach</a>
+        <a href="#why-us">Why Us</a>
+        <a href="#testimonials">Testimonials</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <div class="header-actions">
+        <a class="btn btn-primary btn-sm" href="#contact">Book a Consultation</a>
+        <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="nav-links">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section class="hero">
+      <div class="hero-glow" aria-hidden="true"></div>
+      <div class="container hero-inner">
+        <p class="eyebrow reveal">Business Intelligence &amp; Analytics Consulting</p>
+        <h1 class="reveal">Turn your data into your <span class="text-accent">best decision-maker.</span></h1>
+        <p class="hero-sub reveal">
+          Vercel-Demo1 partners with growing companies to design data warehouses, build
+          trustworthy dashboards, and stand up analytics teams that ship insight — not
+          just reports.
+        </p>
+        <div class="hero-cta reveal">
+          <a class="btn btn-primary btn-lg" href="#contact">Book a Free Consultation</a>
+          <a class="btn btn-ghost btn-lg" href="#services">Explore Services</a>
+        </div>
+
+        <dl class="hero-stats reveal">
+          <div>
+            <dt>40+</dt>
+            <dd>BI platforms delivered</dd>
+          </div>
+          <div>
+            <dt>12 wks</dt>
+            <dd>avg. time to first dashboard</dd>
+          </div>
+          <div>
+            <dt>98%</dt>
+            <dd>client retention rate</dd>
+          </div>
+        </dl>
+      </div>
+
+      <div class="hero-panel reveal" aria-hidden="true">
+        <div class="panel-card">
+          <div class="panel-header">
+            <span class="dot dot-red"></span><span class="dot dot-yellow"></span><span class="dot dot-green"></span>
+            <span class="panel-title">Executive Revenue Dashboard</span>
+          </div>
+          <div class="panel-kpis">
+            <div class="kpi">
+              <span class="kpi-label">MRR</span>
+              <span class="kpi-value">$482K</span>
+              <span class="kpi-delta kpi-up">▲ 12.4%</span>
+            </div>
+            <div class="kpi">
+              <span class="kpi-label">Churn</span>
+              <span class="kpi-value">2.1%</span>
+              <span class="kpi-delta kpi-down">▼ 0.6%</span>
+            </div>
+            <div class="kpi">
+              <span class="kpi-label">Pipeline</span>
+              <span class="kpi-value">$1.9M</span>
+              <span class="kpi-delta kpi-up">▲ 8.0%</span>
+            </div>
+          </div>
+          <div class="panel-chart" aria-hidden="true">
+            <svg viewBox="0 0 300 90" preserveAspectRatio="none">
+              <polyline points="0,70 30,60 60,64 90,45 120,50 150,30 180,38 210,20 240,26 270,10 300,16"
+                fill="none" stroke="#3b82f6" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+              <polyline points="0,70 30,60 60,64 90,45 120,50 150,30 180,38 210,20 240,26 270,10 300,16 300,90 0,90"
+                fill="url(#g1)" stroke="none"/>
+              <defs>
+                <linearGradient id="g1" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#3b82f6" stop-opacity="0.35"/>
+                  <stop offset="100%" stop-color="#3b82f6" stop-opacity="0"/>
+                </linearGradient>
+              </defs>
+            </svg>
+          </div>
+          <div class="panel-bars" aria-hidden="true">
+            <span style="height:40%"></span><span style="height:65%"></span><span style="height:50%"></span>
+            <span style="height:80%"></span><span style="height:55%"></span><span style="height:90%"></span>
+            <span style="height:70%"></span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Logos strip -->
+    <section class="logos-strip">
+      <div class="container">
+        <p class="logos-label">Trusted platforms &amp; ecosystems we work in</p>
+        <div class="logos-row">
+          <span>Power BI</span>
+          <span>Tableau</span>
+          <span>Looker</span>
+          <span>Snowflake</span>
+          <span>dbt</span>
+          <span>Fabric</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services -->
+    <section class="section" id="services">
+      <div class="container">
+        <p class="eyebrow reveal">What We Do</p>
+        <h2 class="reveal">End-to-end BI, from strategy to adoption</h2>
+        <p class="section-sub reveal">
+          We plug in wherever you need us most — as a full delivery team or an extension
+          of your existing data function.
+        </p>
+
+        <div class="grid grid-3">
+          <article class="card reveal">
+            <div class="card-icon">🧭</div>
+            <h3>BI Strategy &amp; Roadmapping</h3>
+            <p>Assess your current data maturity and define a prioritized, business-aligned roadmap for reporting and analytics.</p>
+          </article>
+          <article class="card reveal">
+            <div class="card-icon">🏗️</div>
+            <h3>Data Warehousing &amp; ETL/ELT</h3>
+            <p>Design and build reliable data pipelines and cloud warehouses (Snowflake, BigQuery, Fabric) that scale with you.</p>
+          </article>
+          <article class="card reveal">
+            <div class="card-icon">📊</div>
+            <h3>Dashboards &amp; Reporting</h3>
+            <p>Ship Power BI, Tableau, and Looker dashboards that executives actually open every morning.</p>
+          </article>
+          <article class="card reveal">
+            <div class="card-icon">🛡️</div>
+            <h3>Data Governance &amp; Quality</h3>
+            <p>Establish semantic models, naming standards, and data quality checks so every team trusts one number.</p>
+          </article>
+          <article class="card reveal">
+            <div class="card-icon">🤖</div>
+            <h3>Advanced Analytics &amp; AI</h3>
+            <p>Forecasting, segmentation, and predictive models that plug directly into the dashboards your teams already use.</p>
+          </article>
+          <article class="card reveal">
+            <div class="card-icon">🎓</div>
+            <h3>Managed Support &amp; Training</h3>
+            <p>Ongoing platform support plus hands-on enablement so your internal team can extend the work themselves.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Approach -->
+    <section class="section section-alt" id="approach">
+      <div class="container">
+        <p class="eyebrow reveal">How We Work</p>
+        <h2 class="reveal">A proven five-step delivery process</h2>
+        <p class="section-sub reveal">Fixed-scope engagements with clear milestones — no open-ended retainers, no surprise invoices.</p>
+
+        <ol class="steps">
+          <li class="step reveal">
+            <span class="step-number">01</span>
+            <h3>Discover</h3>
+            <p>Stakeholder interviews and a data/systems audit to understand what decisions your data needs to support.</p>
+          </li>
+          <li class="step reveal">
+            <span class="step-number">02</span>
+            <h3>Design</h3>
+            <p>Define the semantic model, KPI definitions, and dashboard wireframes before a single visual is built.</p>
+          </li>
+          <li class="step reveal">
+            <span class="step-number">03</span>
+            <h3>Build</h3>
+            <p>Stand up pipelines, models, and reports in weekly sprints with visible progress at every checkpoint.</p>
+          </li>
+          <li class="step reveal">
+            <span class="step-number">04</span>
+            <h3>Deploy</h3>
+            <p>Roll out to real users with row-level security, refresh schedules, and documentation in place.</p>
+          </li>
+          <li class="step reveal">
+            <span class="step-number">05</span>
+            <h3>Optimize</h3>
+            <p>Monitor adoption and performance, then iterate based on how teams actually use what we built.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- Why us -->
+    <section class="section" id="why-us">
+      <div class="container">
+        <p class="eyebrow reveal">Why Vercel-Demo1</p>
+        <h2 class="reveal">Consultants who ship, not just slide decks</h2>
+
+        <div class="grid grid-2 why-grid">
+          <div class="why-item reveal">
+            <h3>Platform-agnostic</h3>
+            <p>We recommend the right tool for your stack — Power BI, Tableau, Looker, or a custom build — never a one-size-fits-all pitch.</p>
+          </div>
+          <div class="why-item reveal">
+            <h3>Fixed-scope delivery</h3>
+            <p>Every engagement has a defined scope, timeline, and price. You know exactly what you're getting and when.</p>
+          </div>
+          <div class="why-item reveal">
+            <h3>Senior-only team</h3>
+            <p>No junior bench time. Every engagement is staffed by consultants with 8+ years of hands-on BI delivery experience.</p>
+          </div>
+          <div class="why-item reveal">
+            <h3>Built for adoption</h3>
+            <p>We measure success by dashboard usage, not deployment — and we stick around to make sure people actually use it.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="section section-alt" id="testimonials">
+      <div class="container">
+        <p class="eyebrow reveal">Client Feedback</p>
+        <h2 class="reveal">What partners say about working with us</h2>
+
+        <div class="grid grid-3">
+          <blockquote class="testimonial reveal">
+            <p>"Vercel-Demo1 rebuilt our entire reporting stack in under three months. Our exec team finally trusts the numbers in the room."</p>
+            <footer>— VP of Operations, Mid-Market Retail</footer>
+          </blockquote>
+          <blockquote class="testimonial reveal">
+            <p>"They didn't just hand us dashboards — they trained our analysts to maintain and extend them. That handoff made all the difference."</p>
+            <footer>— Head of Data, B2B SaaS</footer>
+          </blockquote>
+          <blockquote class="testimonial reveal">
+            <p>"Clear scope, clear timeline, zero surprises. Exactly what you want from a BI partner."</p>
+            <footer>— Director of Finance, Logistics</footer>
+          </blockquote>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA banner -->
+    <section class="cta-banner">
+      <div class="container cta-banner-inner">
+        <div>
+          <h2>Ready to make your data work harder?</h2>
+          <p>Tell us about your data stack and reporting goals — we'll reply within one business day.</p>
+        </div>
+        <a class="btn btn-primary btn-lg" href="#contact">Book a Free Consultation</a>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="section" id="contact">
+      <div class="container contact-grid">
+        <div class="reveal">
+          <p class="eyebrow">Get In Touch</p>
+          <h2>Let's talk about your data</h2>
+          <p class="section-sub" style="margin-bottom:1.5rem;">
+            Send us a note about your current stack and reporting challenges. We'll follow up
+            to schedule a free 30-minute consultation.
+          </p>
+          <ul class="contact-list">
+            <li><strong>Email:</strong> <a href="mailto:hello@vercel-demo1.com">hello@vercel-demo1.com</a></li>
+            <li><strong>Phone:</strong> <a href="tel:+15555550123">+1 (555) 555-0123</a></li>
+            <li><strong>Location:</strong> Remote-first, serving clients globally</li>
+          </ul>
+        </div>
+
+        <form class="contact-form reveal" id="contact-form">
+          <div class="form-row">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" required />
+          </div>
+          <div class="form-row">
+            <label for="email">Work email</label>
+            <input type="email" id="email" name="email" required />
+          </div>
+          <div class="form-row">
+            <label for="company">Company</label>
+            <input type="text" id="company" name="company" />
+          </div>
+          <div class="form-row">
+            <label for="message">What are you looking to solve?</label>
+            <textarea id="message" name="message" rows="4" required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary btn-lg form-submit">Send Message</button>
+          <p class="form-note" id="form-note" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
   </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <a class="logo logo-footer" href="#top">
+          <span class="logo-mark" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="3" y="12" width="4" height="9" rx="1" fill="currentColor"/>
+              <rect x="10" y="6" width="4" height="15" rx="1" fill="currentColor"/>
+              <rect x="17" y="2" width="4" height="19" rx="1" fill="currentColor"/>
+            </svg>
+          </span>
+          Vercel-Demo1
+        </a>
+        <p>Business intelligence &amp; data analytics consulting for companies that run on decisions, not guesses.</p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Services</h4>
+        <a href="#services">BI Strategy</a>
+        <a href="#services">Data Warehousing</a>
+        <a href="#services">Dashboards &amp; Reporting</a>
+        <a href="#services">Governance</a>
+      </div>
+
+      <div class="footer-col">
+        <h4>Company</h4>
+        <a href="#approach">Our Approach</a>
+        <a href="#why-us">Why Us</a>
+        <a href="#testimonials">Testimonials</a>
+        <a href="#contact">Contact</a>
+      </div>
+
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <a href="mailto:hello@vercel-demo1.com">hello@vercel-demo1.com</a>
+        <a href="tel:+15555550123">+1 (555) 555-0123</a>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <p>&copy; <span id="year"></span> Vercel-Demo1. All rights reserved.</p>
+    </div>
+  </footer>
+
   <script src="script.js"></script>
 </body>
 </html>

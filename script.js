@@ -1,85 +1,61 @@
-const facts = [
-  "Honey never spoils — archaeologists have found 3,000-year-old honey that's still edible.",
-  "Octopuses have three hearts and blue blood.",
-  "A day on Venus is longer than a year on Venus.",
-  "Bananas are berries, but strawberries aren't.",
-  "The Eiffel Tower can grow taller in summer due to thermal expansion.",
-  "Wombat poop is cube-shaped.",
-  "There are more stars in the universe than grains of sand on all of Earth's beaches.",
-  "Sharks existed before trees.",
-  "A group of flamingos is called a 'flamboyance'.",
-  "Sea otters hold hands while sleeping so they don't drift apart.",
-];
+// Sticky header shadow on scroll
+const header = document.querySelector(".site-header");
+const onScroll = () => {
+  header.classList.toggle("scrolled", window.scrollY > 8);
+};
+onScroll();
+window.addEventListener("scroll", onScroll, { passive: true });
 
-const FACT_API_URL = "https://uselessfacts.jsph.pl/api/v2/facts/random?language=en";
+// Mobile nav toggle
+const navToggle = document.getElementById("nav-toggle");
+const navLinks = document.getElementById("nav-links");
 
-const factEl = document.getElementById("fact");
-const btn = document.getElementById("btn");
-const countEl = document.getElementById("count");
-const themeToggle = document.getElementById("theme-toggle");
-let count = 0;
-let lastIndex = -1;
-let lastFact = null;
-
-function pickLocalFact() {
-  let index;
-  do {
-    index = Math.floor(Math.random() * facts.length);
-  } while (index === lastIndex && facts.length > 1);
-  lastIndex = index;
-  return facts[index];
-}
-
-async function fetchFact() {
-  const controller = new AbortController();
-  const timeout = setTimeout(() => controller.abort(), 4000);
-  try {
-    const res = await fetch(FACT_API_URL, { signal: controller.signal });
-    if (!res.ok) throw new Error(`Request failed: ${res.status}`);
-    const data = await res.json();
-    if (!data.text) throw new Error("Malformed response");
-    return data.text;
-  } finally {
-    clearTimeout(timeout);
-  }
-}
-
-async function nextFact() {
-  try {
-    let fact = await fetchFact();
-    if (fact === lastFact) fact = await fetchFact();
-    lastFact = fact;
-    return fact;
-  } catch {
-    const fact = pickLocalFact();
-    lastFact = fact;
-    return fact;
-  }
-}
-
-btn.addEventListener("click", async () => {
-  factEl.classList.add("fading");
-  btn.disabled = true;
-  const fact = await nextFact();
-  factEl.textContent = fact;
-  factEl.classList.remove("fading");
-  count += 1;
-  countEl.textContent = count;
-  btn.disabled = false;
+navToggle.addEventListener("click", () => {
+  const isOpen = navLinks.classList.toggle("open");
+  navToggle.setAttribute("aria-expanded", String(isOpen));
 });
 
-function applyTheme(theme) {
-  document.documentElement.setAttribute("data-theme", theme);
-  themeToggle.textContent = theme === "dark" ? "☀️" : "🌙";
-  localStorage.setItem("theme", theme);
-}
+navLinks.querySelectorAll("a").forEach((link) => {
+  link.addEventListener("click", () => {
+    navLinks.classList.remove("open");
+    navToggle.setAttribute("aria-expanded", "false");
+  });
+});
 
-const savedTheme =
-  localStorage.getItem("theme") ||
-  (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
-applyTheme(savedTheme);
+// Scroll-reveal animation
+const revealEls = document.querySelectorAll(".reveal");
+const revealObserver = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("in-view");
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  },
+  { threshold: 0.15, rootMargin: "0px 0px -40px 0px" }
+);
+revealEls.forEach((el) => revealObserver.observe(el));
 
-themeToggle.addEventListener("click", () => {
-  const current = document.documentElement.getAttribute("data-theme");
-  applyTheme(current === "dark" ? "light" : "dark");
+// Footer year
+document.getElementById("year").textContent = new Date().getFullYear();
+
+// Contact form — no backend wired up, so hand off to the visitor's mail client
+const contactForm = document.getElementById("contact-form");
+const formNote = document.getElementById("form-note");
+
+contactForm.addEventListener("submit", (event) => {
+  event.preventDefault();
+  const name = document.getElementById("name").value.trim();
+  const email = document.getElementById("email").value.trim();
+  const company = document.getElementById("company").value.trim();
+  const message = document.getElementById("message").value.trim();
+
+  const subject = encodeURIComponent(`BI consultation request from ${name || "website visitor"}`);
+  const body = encodeURIComponent(
+    `Name: ${name}\nEmail: ${email}\nCompany: ${company}\n\n${message}`
+  );
+
+  window.location.href = `mailto:hello@vercel-demo1.com?subject=${subject}&body=${body}`;
+  formNote.textContent = "Opening your email client to send this message…";
 });
