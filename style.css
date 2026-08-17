@@ -2,6 +2,24 @@
   box-sizing: border-box;
 }
 
+:root {
+  --bg-start: #6366f1;
+  --bg-end: #ec4899;
+  --card-bg: #ffffff;
+  --text-heading: #1f2937;
+  --text-body: #374151;
+  --text-muted: #9ca3af;
+  --accent: #6366f1;
+  --accent-hover: #4f46e5;
+}
+
+:root[data-theme="dark"] {
+  --card-bg: #1f2937;
+  --text-heading: #f9fafb;
+  --text-body: #e5e7eb;
+  --text-muted: #9ca3af;
+}
+
 body {
   margin: 0;
   min-height: 100vh;
@@ -9,51 +27,88 @@ body {
   align-items: center;
   justify-content: center;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  background: linear-gradient(135deg, #6366f1, #ec4899);
+  background: linear-gradient(135deg, var(--bg-start), var(--bg-end));
+  transition: background 0.3s ease;
+}
+
+#theme-toggle {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  border-radius: 50%;
+  width: 2.5rem;
+  height: 2.5rem;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+#theme-toggle:hover {
+  background: rgba(255, 255, 255, 0.35);
+  transform: scale(1.05);
 }
 
 .card {
-  background: #ffffff;
+  background: var(--card-bg);
   padding: 2.5rem;
   border-radius: 16px;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
   max-width: 480px;
   width: 90%;
   text-align: center;
+  transition: background 0.3s ease;
 }
 
 h1 {
   margin-top: 0;
   font-size: 1.5rem;
-  color: #1f2937;
+  color: var(--text-heading);
 }
 
 #fact {
   min-height: 4.5rem;
   font-size: 1.1rem;
-  color: #374151;
+  color: var(--text-body);
   display: flex;
   align-items: center;
   justify-content: center;
+  opacity: 1;
+  transition: opacity 0.15s ease;
+}
+
+#fact.fading {
+  opacity: 0;
 }
 
 button {
-  background: #6366f1;
+  background: var(--accent);
   color: white;
   border: none;
   padding: 0.75rem 1.5rem;
   font-size: 1rem;
   border-radius: 8px;
   cursor: pointer;
-  transition: background 0.2s ease;
+  transition: background 0.2s ease, transform 0.1s ease;
 }
 
 button:hover {
-  background: #4f46e5;
+  background: var(--accent-hover);
+}
+
+button:active {
+  transform: scale(0.96);
+}
+
+button:focus-visible,
+#theme-toggle:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 2px;
 }
 
 .counter {
   margin-top: 1rem;
   font-size: 0.85rem;
-  color: #9ca3af;
+  color: var(--text-muted);
 }

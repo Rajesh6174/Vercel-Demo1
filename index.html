@@ -7,9 +7,10 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <button id="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark mode">🌙</button>
   <main class="card">
     <h1>🎲 Random Fact Generator</h1>
-    <p id="fact">Click the button to learn something random!</p>
+    <p id="fact" aria-live="polite">Click the button to learn something random!</p>
     <button id="btn">Give me a fact</button>
     <p class="counter">Facts seen: <span id="count">0</span></p>
   </main>
